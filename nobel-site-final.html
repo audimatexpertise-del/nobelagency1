@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nobel — Agence Digitale pour Diagnostiqueurs Immobiliers</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nobel-cyan: #0AC1D7;
+  --nobel-green: #20DE83;
+  --nobel-navy: #14264C;
+  --white: #ffffff;
+  --light-bg: #f8fafb;
+  --text-dark: #14264C;
+  --text-gray: #6b7280;
+  --border-light: #e5e7eb;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  background: var(--white);
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 5%;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-wave {
+  width: 45px;
+  height: 45px;
+  background: var(--nobel-cyan);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.logo-wave:hover {
+  transform: scale(1.05);
+}
+
+.logo-wave svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--nobel-navy);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--nobel-cyan);
+}
+
+.cta-button {
+  padding: 10px 24px;
+  background: var(--nobel-cyan);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(10, 193, 215, 0.3);
+  background: #09adc1;
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--nobel-navy);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 999;
+  padding: 80px 5% 40px;
+  overflow-y: auto;
+}
+
+.mobile-nav.active {
+  display: block;
+}
+
+.mobile-nav ul {
+  list-style: none;
+}
+
+.mobile-nav li {
+  margin-bottom: 24px;
+}
+
+.mobile-nav a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  display: block;
+  padding: 12px 0;
+}
+
+.close-mobile-menu {
+  position: absolute;
+  top: 20px;
+  right: 5%;
+  background: none;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  color: var(--nobel-navy);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 5% 80px;
+  background: linear-gradient(135deg, #0AC1D7 0%, #20DE83 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  opacity: 0.5;
+}
+
+.hero-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-text {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 16px 36px;
+  background: white;
+  color: var(--nobel-navy);
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  padding: 16px 36px;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Mockup showcase */
+.hero-mockup {
+  position: relative;
+  animation: fadeInRight 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.mockup-container {
+  position: relative;
+  width: 100%;
+}
+
+.mockup-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.mockup-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mockup-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #28ca42; }
+
+.mockup-content {
+  background: var(--light-bg);
+  border-radius: 14px;
+  padding: 24px;
+  min-height: 350px;
+}
+
+.mockup-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.mockup-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--nobel-cyan);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-top: 6px;
+}
+
+/* Features Section */
+.features {
+  padding: 100px 5%;
+  background: white;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(10, 193, 215, 0.1);
+  color: var(--nobel-cyan);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: var(--text-gray);
+  line-height: 1.7;
+}
+
+.features-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+  border: 1px solid var(--border-light);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--nobel-cyan);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--nobel-cyan);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.feature-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.feature-description {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+/* Screenshots Section */
+.screenshots {
+  padding: 100px 5%;
+  background: var(--light-bg);
+}
+
+.screenshot-item {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.screenshot-item:nth-child(even) {
+  direction: rtl;
+}
+
+.screenshot-item:nth-child(even) > * {
+  direction: ltr;
+}
+
+.screenshot-image {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.screenshot-text h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.screenshot-text p {
+  font-size: 16px;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.screenshot-text ul {
+  list-style: none;
+  margin-top: 24px;
+}
+
+.screenshot-text li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: var(--text-gray);
+}
+
+.check-icon {
+  width: 22px;
+  height: 22px;
+  background: var(--nobel-cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Form Example Section */
+.form-example {
+  padding: 100px 5%;
+  background: white;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-light);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-header h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.form-header p {
+  font-size: 16px;
+  color: var(--text-gray);
+}
+
+.form-step {
+  margin-bottom: 32px;
+}
+
+.form-step-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  background: var(--nobel-cyan);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.diagnostic-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.diagnostic-card {
+  background: var(--light-bg);
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.diagnostic-card:hover,
+.diagnostic-card.selected {
+  border-color: var(--nobel-cyan);
+  background: rgba(10, 193, 215, 0.05);
+}
+
+.diagnostic-card .icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.diagnostic-card .name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-input-group {
+  margin-bottom: 20px;
+}
+
+.form-input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.form-input-group input,
+.form-input-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.form-input-group input:focus,
+.form-input-group textarea:focus {
+  outline: none;
+  border-color: var(--nobel-cyan);
+}
+
+.form-submit {
+  width: 100%;
+  padding: 18px;
+  background: var(--nobel-cyan);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form-submit:hover {
+  background: #09adc1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 193, 215, 0.3);
+}
+
+/* Pricing Section */
+.pricing {
+  padding: 100px 5%;
+  background: var(--light-bg);
+}
+
+.pricing-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.pricing-card.popular {
+  border-color: var(--nobel-cyan);
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px rgba(10, 193, 215, 0.2);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--nobel-cyan);
+  color: white;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-card.popular:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.pricing-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+}
+
+.pricing-price {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--nobel-cyan);
+  margin-bottom: 6px;
+}
+
+.pricing-period {
+  font-size: 15px;
+  color: var(--text-gray);
+  margin-bottom: 28px;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.pricing-features .check {
+  color: var(--nobel-green);
+  font-size: 16px;
+}
+
+.pricing-button {
+  width: 100%;
+  padding: 14px;
+  background: var(--nobel-cyan);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pricing-button:hover {
+  background: #09adc1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 193, 215, 0.3);
+}
+
+/* About Section */
+.about {
+  padding: 100px 5%;
+  background: white;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.team-section {
+  background: var(--light-bg);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.team-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.team-member {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  background: var(--nobel-cyan);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.team-member:nth-child(2) .team-avatar {
+  background: var(--nobel-green);
+}
+
+.team-member:nth-child(3) .team-avatar {
+  background: var(--nobel-navy);
+}
+
+.team-member:nth-child(4) .team-avatar {
+  background: linear-gradient(135deg, var(--nobel-cyan) 0%, var(--nobel-green) 100%);
+}
+
+.team-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-size: 13px;
+  color: var(--text-gray);
+}
+
+.about-text h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.about-text p {
+  font-size: 16px;
+  color: var(--text-gray);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.nobel-story {
+  background: rgba(10, 193, 215, 0.05);
+  border-left: 4px solid var(--nobel-cyan);
+  padding: 24px;
+  border-radius: 12px;
+  margin-top: 28px;
+}
+
+.nobel-story h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.nobel-story p {
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 80px 5%;
+  background: var(--nobel-navy);
+  position: relative;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.cta-content p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+footer {
+  padding: 60px 5% 30px;
+  background: var(--nobel-navy);
+  color: white;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.footer-brand h3 {
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 14px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-size: 18px;
+}
+
+.social-icon:hover {
+  background: var(--nobel-cyan);
+  transform: translateY(-3px);
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--nobel-cyan);
+  padding-left: 5px;
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-content,
+  .screenshot-item,
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .screenshot-item:nth-child(even) {
+    direction: ltr;
+  }
+
+  .features-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .section-title {
+    font-size: 34px;
+  }
+
+  .diagnostic-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 5% 60px;
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  .mockup-card {
+    padding: 24px;
+  }
+
+  .mockup-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .features,
+  .screenshots,
+  .form-example,
+  .pricing,
+  .about,
+  .cta-section {
+    padding: 60px 5%;
+  }
+
+  .screenshot-item {
+    margin-bottom: 60px;
+  }
+
+  .form-container {
+    padding: 32px 24px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .cta-content h2 {
+    font-size: 32px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.8rem 5%;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .logo-wave {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .diagnostic-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-price {
+    font-size: 36px;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animations on scroll */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <nav>
+    <div class="logo-container">
+      <div class="logo-wave">
+        <svg viewBox="0 0 100 100">
+          <path d="M20,50 Q35,20 50,50 T80,50" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="logo-text">Nobel</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Solutions</a></li>
+      <li><a href="#espace-client">Espace Client</a></li>
+      <li><a href="#pricing">Tarifs</a></li>
+      <li><a href="#agence">L'Agence</a></li>
+      <li><a href="https://calendly.com/agence-nobel" target="_blank" class="cta-button">Demander une démo</a></li>
+    </ul>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+  </nav>
+</header>
+
+<!-- Mobile Navigation -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-mobile-menu" id="closeMobileMenu">×</button>
+  <ul>
+    <li><a href="#features">Solutions</a></li>
+    <li><a href="#espace-client">Espace Client</a></li>
+    <li><a href="#pricing">Tarifs</a></li>
+    <li><a href="#agence">L'Agence</a></li>
+    <li><a href="https://calendly.com/agence-nobel" target="_blank" class="cta-button" style="margin-top: 20px;">Demander une démo</a></li>
+  </ul>
+</div>
+
+<!-- Hero Section -->
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🚀 Agence digitale spécialisée diagnostiqueurs</div>
+      <h1>Développez votre activité avec un site intelligent</h1>
+      <p class="hero-subtitle">
+        Sites web sur-mesure + IA + Espace client intelligent. La solution complète pour générer des leads qualifiés et gérer vos diagnostics immobiliers.
+      </p>
+      <div class="hero-cta-group">
+        <a href="https://calendly.com/agence-nobel" target="_blank" class="btn-primary">Demander une démo</a>
+        <a href="#pricing" class="btn-secondary">Voir les tarifs</a>
+      </div>
+    </div>
+    <div class="hero-mockup">
+      <div class="mockup-container">
+        <div class="mockup-card">
+          <div class="mockup-header">
+            <div class="mockup-dot dot-red"></div>
+            <div class="mockup-dot dot-yellow"></div>
+            <div class="mockup-dot dot-green"></div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-title">📊 Tableau de bord</div>
+            <div class="mockup-stats">
+              <div class="stat-card">
+                <div class="stat-value">+287%</div>
+                <div class="stat-label">Leads générés</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">45</div>
+                <div class="stat-label">Devis/mois</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">18</div>
+                <div class="stat-label">Diagnostics actifs</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Satisfaction client</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="features">
+  <div class="section-header">
+    <div class="section-badge">Solutions</div>
+    <h2 class="section-title">Un vrai outil de croissance, pas juste un site vitrine</h2>
+    <p class="section-subtitle">
+      Nous créons des sites web 100% sur-mesure avec des fonctionnalités pensées pour développer votre activité de diagnostiqueur immobilier.
+    </p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3 class="feature-title">Site 100% sur-mesure</h3>
+      <p class="feature-description">
+        Design unique adapté à votre identité. Référencement local optimisé. Pages spécialisées par type de diagnostic.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3 class="feature-title">IA dans votre espace client</h3>
+      <p class="feature-description">
+        Vos clients peuvent poser des questions directement à leurs rapports PDF de diagnostic grâce à l'intelligence artificielle.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3 class="feature-title">Espace client intelligent</h3>
+      <p class="feature-description">
+        Gestion des documents. Suivi des dossiers en temps réel. Communication simplifiée avec vos clients.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3 class="feature-title">Gestion des leads</h3>
+      <p class="feature-description">
+        CRM intégré pour suivre vos prospects. Notifications instantanées. Statistiques de conversion détaillées.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">Formulaire intelligent</h3>
+      <p class="feature-description">
+        Devis en 2 minutes. Qualification automatique. Interface visuelle avec cartes interactives.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <h3 class="feature-title">SEO ultra-ciblé</h3>
+      <p class="feature-description">
+        Référencement local optimisé. Mots-clés métier maîtrisés. Position garantie sur Google.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshots Section -->
+<section class="screenshots" id="espace-client">
+  <div class="section-header">
+    <div class="section-badge">Espace Client</div>
+    <h2 class="section-title">Un back-office professionnel pour vos clients</h2>
+    <p class="section-subtitle">
+      Offrez une expérience digitale moderne et simplifiez la gestion de vos dossiers.
+    </p>
+  </div>
+
+  <div class="screenshot-item">
+    <div class="screenshot-image">
+      <img src="ai-chat-screenshot.png" alt="Assistant IA pour diagnostics" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+    </div>
+    <div class="screenshot-text">
+      <h3>Assistant IA : Vos diagnostics expliqués en 2 secondes</h3>
+      <p>
+        L'assistant IA permet à vos clients de poser des questions directement à leurs rapports PDF de diagnostic. Plus besoin d'appels répétés pour des clarifications.
+      </p>
+      <ul>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Réponses instantanées 24/7 depuis les PDF</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Compréhension contextuelle des diagnostics</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Réduction de 60% des demandes de clarification</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="screenshot-item">
+    <div class="screenshot-image">
+      <img src="resume-diagnostic.png" alt="Résumé clair des diagnostics" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+    </div>
+    <div class="screenshot-text">
+      <h3>Résumés clairs générés automatiquement</h3>
+      <p>
+        Chaque rapport envoyé est accompagné d'un résumé synthétique généré par l'IA, facilitant la compréhension pour vos clients.
+      </p>
+      <ul>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Génération automatique de résumés</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Langage accessible pour tous les clients</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Téléchargement PDF en un clic</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="screenshot-item">
+    <div class="screenshot-image">
+      <img src="chat-client.png" alt="Communication client simplifiée" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+    </div>
+    <div class="screenshot-text">
+      <h3>Communication simplifiée avec vos clients</h3>
+      <p>
+        Messagerie intégrée pour échanger facilement avec vos clients. Toutes les conversations sont centralisées et archivées.
+      </p>
+      <ul>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Chat en temps réel avec vos clients</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Notifications par email automatiques</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Historique complet des échanges</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Form Example Section -->
+<section class="form-example">
+  <div class="section-header">
+    <div class="section-badge">Exemple de formulaire</div>
+    <h2 class="section-title">Un formulaire intelligent qui convertit</h2>
+    <p class="section-subtitle">
+      Interface visuelle avec cartes pour faciliter la sélection. Devis en moins de 2 minutes.
+    </p>
+  </div>
+
+  <div class="form-container">
+    <div class="form-header">
+      <h3>Demande de diagnostic immobilier</h3>
+      <p>Complétez ce formulaire pour obtenir un devis personnalisé</p>
+    </div>
+
+    <div class="form-step">
+      <div class="form-step-title">
+        <span class="step-number">1</span>
+        Quel(s) diagnostic(s) souhaitez-vous ?
+      </div>
+      <div class="diagnostic-cards">
+        <div class="diagnostic-card">
+          <div class="icon">🏠</div>
+          <div class="name">DPE</div>
+        </div>
+        <div class="diagnostic-card">
+          <div class="icon">⚡</div>
+          <div class="name">Électricité</div>
+        </div>
+        <div class="diagnostic-card">
+          <div class="icon">🔥</div>
+          <div class="name">Gaz</div>
+        </div>
+        <div class="diagnostic-card">
+          <div class="icon">☠️</div>
+          <div class="name">Amiante</div>
+        </div>
+        <div class="diagnostic-card">
+          <div class="icon">🐛</div>
+          <div class="name">Termites</div>
+        </div>
+        <div class="diagnostic-card">
+          <div class="icon">🧪</div>
+          <div class="name">Plomb</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-step">
+      <div class="form-step-title">
+        <span class="step-number">2</span>
+        Informations sur le bien
+      </div>
+      <div class="form-input-group">
+        <label>Adresse du bien</label>
+        <input type="text" placeholder="123 rue de Paris, Lyon">
+      </div>
+      <div class="form-input-group">
+        <label>Surface (m²)</label>
+        <input type="number" placeholder="85">
+      </div>
+      <div class="form-input-group">
+        <label>Type de bien</label>
+        <input type="text" placeholder="Appartement, Maison, etc.">
+      </div>
+    </div>
+
+    <div class="form-step">
+      <div class="form-step-title">
+        <span class="step-number">3</span>
+        Vos coordonnées
+      </div>
+      <div class="form-input-group">
+        <label>Nom et prénom</label>
+        <input type="text" placeholder="Jean Dupont">
+      </div>
+      <div class="form-input-group">
+        <label>Email</label>
+        <input type="email" placeholder="jean.dupont@email.fr">
+      </div>
+      <div class="form-input-group">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="06 12 34 56 78">
+      </div>
+    </div>
+
+    <button class="form-submit">Recevoir mon devis gratuit</button>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing" id="pricing">
+  <div class="section-header">
+    <div class="section-badge">Tarifs</div>
+    <h2 class="section-title">Des forfaits mensuels adaptés à votre activité</h2>
+    <p class="section-subtitle">
+      Pas de frais cachés. Pas d'engagement. Résiliable à tout moment.
+    </p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-name">Essentiel</div>
+      <div class="pricing-price">149€</div>
+      <div class="pricing-period">par mois</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> Site vitrine optimisé</li>
+        <li><span class="check">✓</span> 5 pages personnalisées</li>
+        <li><span class="check">✓</span> Design responsive</li>
+        <li><span class="check">✓</span> SEO de base</li>
+        <li><span class="check">✓</span> Formulaires de contact</li>
+        <li><span class="check">✓</span> Formation à la gestion</li>
+      </ul>
+      <button class="pricing-button" onclick="window.open('https://calendly.com/agence-nobel', '_blank')">Choisir Essentiel</button>
+    </div>
+    
+    <div class="pricing-card popular">
+      <div class="popular-badge">Le plus populaire</div>
+      <div class="pricing-name">Performance</div>
+      <div class="pricing-price">189€</div>
+      <div class="pricing-period">par mois</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> Tout du pack Essentiel</li>
+        <li><span class="check">✓</span> SEO avancé local</li>
+        <li><span class="check">✓</span> 10 pages optimisées</li>
+        <li><span class="check">✓</span> Blog intégré</li>
+        <li><span class="check">✓</span> Espace client</li>
+        <li><span class="check">✓</span> Suivi mensuel 6 mois</li>
+        <li><span class="check">✓</span> Optimisations continues</li>
+      </ul>
+      <button class="pricing-button" onclick="window.open('https://calendly.com/agence-nobel', '_blank')">Choisir Performance</button>
+    </div>
+    
+    <div class="pricing-card">
+      <div class="pricing-name">Premium</div>
+      <div class="pricing-price">219€</div>
+      <div class="pricing-period">par mois</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> Tout du pack Performance</li>
+        <li><span class="check">✓</span> Stratégie digitale complète</li>
+        <li><span class="check">✓</span> Pages illimitées</li>
+        <li><span class="check">✓</span> Assistant IA intégré</li>
+        <li><span class="check">✓</span> Google Ads setup</li>
+        <li><span class="check">✓</span> Suivi mensuel 12 mois</li>
+        <li><span class="check">✓</span> Garantie résultats</li>
+      </ul>
+      <button class="pricing-button" onclick="window.open('https://calendly.com/agence-nobel', '_blank')">Choisir Premium</button>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="agence">
+  <div class="about-content">
+    <div class="team-section">
+      <h3 class="team-title">Notre équipe</h3>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="team-avatar">👨‍💼</div>
+          <div class="team-name">Marc D.</div>
+          <div class="team-role">Diagnostiqueur & Co-fondateur</div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">👩‍💻</div>
+          <div class="team-name">Sophie L.</div>
+          <div class="team-role">Développeuse Web</div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">👨‍💻</div>
+          <div class="team-name">Thomas R.</div>
+          <div class="team-role">Expert SEO</div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">👩‍💼</div>
+          <div class="team-name">Julie M.</div>
+          <div class="team-role">Chef de projet</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-badge">Qui sommes-nous ?</div>
+      <h2>Des diagnostiqueurs qui comprennent vos défis</h2>
+      <p>
+        Nous sommes une équipe de diagnostiqueurs immobiliers et de développeurs web qui ont vécu les mêmes difficultés que vous : manque de visibilité en ligne, gestion administrative chronophage, et difficulté à générer des leads qualifiés.
+      </p>
+      <p>
+        <strong>Nous avons fait nos preuves.</strong> Après avoir développé notre propre activité de diagnostic grâce au digital, nous avons décidé de mettre notre expertise au service d'autres diagnostiqueurs. Nobel est né de l'alliance entre deux expertises : le diagnostic immobilier et le développement web.
+      </p>
+      <div class="nobel-story">
+        <h3>📚 Pourquoi "Nobel" ?</h3>
+        <p>
+          Alfred Nobel, inventeur de la dynamite et créateur du Prix Nobel, symbolise l'innovation qui transforme le monde. Comme lui, nous croyons que l'alliance entre expertise métier et innovation technologique peut révolutionner une industrie. Nobel incarne notre vision : récompenser l'excellence et propulser les diagnostiqueurs vers le succès.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contact">
+  <div class="cta-content">
+    <h2>Prêt à développer votre activité ?</h2>
+    <p>
+      Rejoignez les dizaines de diagnostiqueurs qui ont déjà choisi Nobel pour générer plus de leads et automatiser leur gestion.
+    </p>
+    <div class="cta-buttons">
+      <a href="https://calendly.com/agence-nobel" target="_blank" class="btn-primary">Demander une démo</a>
+      <a href="#pricing" class="btn-secondary">Voir les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>Nobel</h3>
+      <p>
+        L'agence digitale spécialisée dans la création de sites web pour diagnostiqueurs immobiliers. Propulsez votre activité avec nos solutions innovantes.
+      </p>
+      <div class="footer-social">
+        <a href="https://linkedin.com/company/agencenobel" target="_blank" class="social-icon" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon" title="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Solutions</h4>
+      <ul class="footer-links">
+        <li><a href="#features">Site sur-mesure</a></li>
+        <li><a href="#espace-client">Espace client</a></li>
+        <li><a href="#features">Assistant IA</a></li>
+        <li><a href="#features">Gestion des leads</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Agence</h4>
+      <ul class="footer-links">
+        <li><a href="#agence">Qui sommes-nous</a></li>
+        <li><a href="#">Nos réalisations</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Témoignages</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:0643873167">06 43 87 31 67</a></li>
+        <li><a href="mailto:contact@nobel.fr">contact@nobel.fr</a></li>
+        <li><a href="https://calendly.com/agence-nobel" target="_blank">Demander une démo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Nobel. Tous droits réservés. | Mentions légales | Politique de confidentialité</p>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileNav = document.getElementById('mobileNav');
+const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileNav.classList.add('active');
+  document.body.style.overflow = 'hidden';
+});
+
+closeMobileMenu.addEventListener('click', () => {
+  mobileNav.classList.remove('active');
+  document.body.style.overflow = 'auto';
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.mobile-nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href !== '#' && href.length > 1) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const headerOffset = 80;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  });
+});
+
+// Diagnostic cards selection example
+document.querySelectorAll('.diagnostic-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('selected');
+  });
+});
+
+// Fade in on scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.feature-card, .pricing-card, .screenshot-item, .team-member').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
